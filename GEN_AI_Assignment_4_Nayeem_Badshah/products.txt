@@ -1,0 +1,3 @@
+Laptop | 89000.00
+Mobile | 30000.00
+Headphone | 3000.00

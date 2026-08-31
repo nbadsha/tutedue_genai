@@ -1,6 +1,6 @@
-# GEN AI Assignment 3
+# GEN AI Assignment 4
 
-This assignment practices Python functions, recursion, lambda expressions, and the `map()` and `filter()` functions.
+This assignment practices Python file handling, reading and writing text files, appending records, basic calculations, and simple error-safe file access.
 
 ## Notebook
 
@@ -25,40 +25,55 @@ Open the notebook and run the cells from top to bottom:
 jupyter lab
 ```
 
-Task 7 is interactive and waits for menu input. Use `q` to exit its menu.
+Running the notebook creates `sales_data.txt`, `products.txt`, and `discount_report.txt` in the notebook's working directory.
+
+Tasks 5 and 7 require user input while their cells are running.
 
 ## Implemented Tasks
 
-### Task 1: Basic Function - Price After Discount
+### Task 1: Write Sales Records to a File
 
-Defines `apply_discount(price, discount_percent=5)`, which returns the price after discount. The function also limits discounts to a maximum of 60%. It is tested with a 10% discount and the default 5% discount.
+Creates `sales = [1200, 450, 980, 1500, 3000]`, writes each value on a separate line to `sales_data.txt`, then reopens and prints the file.
 
-### Task 2: Recursive Function - Factorial Utility
+### Task 2: Read File in Different Ways
 
-Defines a recursive `factorial(n)` function with base cases for `0` and `1`. Negative values display an error message and return `None`.
+Demonstrates `.read()` for the entire file, `.readline()` for the first line, and `.readlines()` for all lines. Newline characters are removed and the sales values are converted to integers.
 
-### Task 3: Lambda Function - GST Calculator
+### Task 3: Append New Sales
 
-Defines `gst`, a lambda function that adds 18% GST to a price. It also demonstrates calculating a price after applying a discount and GST.
+Appends `5000`, `2500`, and `1700` to `sales_data.txt`, prints the updated file, and displays the total number of lines.
 
-### Task 4: Using `map()` - Apply GST to a List of Prices
+### Task 4: Generate Summary Report from File
 
-Uses `map(gst, prices)` to create `prices_with_gst` from a list of prices and prints both lists.
+Reads the sales values from `sales_data.txt` and calculates:
 
-### Task 5: Using `filter()` - Filter Expensive Products
+- Total Sales
+- Highest Sale
+- Lowest Sale
+- Average Sale
 
-Uses `filter()` to separate prices greater than 500 from prices less than or equal to 500.
+### Task 5: Create Product Info File
 
-### Task 6: Combined Utility Function
+Asks the user for three product names and prices, writes them to `products.txt` using the format `ProductName | Price`, and reads the file back line by line.
 
-Defines `process_prices(prices)`, which uses `map()` to apply a 10% discount and `filter()` to keep discounted prices above 300. The function returns both lists.
+### Task 6: Read File Safely
 
-### Task 7: Mini Problem - Menu Using Functions
+Asks the user for a filename and uses `os.path.exists()` before opening it. Existing files are printed; missing files display:
 
-Defines three helper functions:
+```text
+File not found. Please check the filename.
+```
 
-- `add_price(prices_list, price)` adds a price to a list.
-- `get_average_price(prices_list)` returns the average price.
-- `get_max_price(prices_list)` returns the highest price.
+### Task 7: Export Discounted Prices
 
-These functions are used in a loop-driven menu with options to add a price, show the average, show the highest price, or quit.
+Uses a product-price dictionary and asks for a discount percentage. It writes each product's original and discounted price to `discount_report.txt` with this format:
+
+```text
+Product | Original Price | Discounted Price
+```
+
+The report also includes the total number of products and the average discounted price, then prints the completed file.
+
+## Note
+
+Run the cells in order because later tasks use files created by earlier tasks.
